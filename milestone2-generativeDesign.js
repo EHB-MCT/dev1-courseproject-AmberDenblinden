@@ -7,16 +7,31 @@ let height = context.canvas.height;
 
 drawMaze();
 draw();
+drawAgain();
 
+// Circle lines
 function draw() {
 	for (let i = 0; i < width; i++) {
 		for (let j = 0; j < height; j++) {
-			context.strokeStyle = "white";
-			Utils.strokeCircle(i * 100 + 25, j + i * 50, 20 + i);
+			context.fillStyle = "white";
+			context.lineWidth = 2;
+			Utils.fillCircle(i * 100 + 20, j + i * 80, 20 + i);
 		}
 	}
 }
 
+// Try circle line again other side
+/* function drawAgain() {
+	for (let i = 0; i < width; i++) {
+		for (let j = 0; i < height; j++) {
+			context.fillStyle = "white";
+			context.lineWidth = 2;
+			Utils.fillCircle(i * 100 + 20, j + i * 80, 20 + i);
+		}
+	}
+} */
+
+// Changing background
 function drawMaze() {
 	context.lineWidth = 5;
 
@@ -26,9 +41,9 @@ function drawMaze() {
 			context.strokeStyle = randomValue === 0 ? "pink" : "lightblue";
 
 			if (randomValue === 0) {
-				Utils.drawLine(i, j, i + 15, j + 15);
+				Utils.drawLine(i, j, i + Math.random() * 2, j + 15);
 			} else {
-				Utils.drawLine(i, j + 15, i + 15, j);
+				Utils.drawLine(i, j + Math.random() * 2, i + 15, j);
 			}
 		}
 	}
