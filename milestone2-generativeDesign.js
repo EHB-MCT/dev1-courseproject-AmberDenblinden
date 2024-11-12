@@ -7,7 +7,6 @@ let height = context.canvas.height;
 
 drawMaze();
 draw();
-drawAgain();
 
 // Circle lines
 function draw() {
@@ -15,8 +14,10 @@ function draw() {
 
 	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < height; j++) {
+			// Circle lines form left to right becoming smaller
 			Utils.fillCircle(i * 100 + 20, j + i * 100, 20 + i);
 
+			// Circle lines form right to left becoming smaller
 			Utils.fillCircle(width - (i * 100 + 20), height - (j + i * 100), 20 + i);
 		}
 	}
