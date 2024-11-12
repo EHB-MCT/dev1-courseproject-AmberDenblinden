@@ -11,25 +11,25 @@ drawAgain();
 
 // Circle lines
 function draw() {
-	for (let i = 0; i < width; i++) {
+	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < height; j++) {
 			context.fillStyle = "white";
 			context.lineWidth = 2;
-			Utils.fillCircle(i * 100 + 20, j + i * 80, 20 + i);
+			Utils.fillCircle(i * 100 + 20, j + i * 100, 20 + i);
 		}
 	}
 }
 
 // Try circle line again other side
-/* function drawAgain() {
-	for (let i = 0; i < width; i++) {
+function drawAgain() {
+	for (let i = 0; i < 10; i++) {
 		for (let j = 0; i < height; j++) {
 			context.fillStyle = "white";
 			context.lineWidth = 2;
-			Utils.fillCircle(i * 100 + 20, j + i * 80, 20 + i);
+			Utils.fillCircle(width - (i * 100 + 20), height - (j + i * 100), 20 + i);
 		}
 	}
-} */
+}
 
 // Changing background
 function drawMaze() {
