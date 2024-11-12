@@ -11,21 +11,12 @@ drawAgain();
 
 // Circle lines
 function draw() {
+	context.fillStyle = "white";
+
 	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < height; j++) {
-			context.fillStyle = "white";
-			context.lineWidth = 2;
 			Utils.fillCircle(i * 100 + 20, j + i * 100, 20 + i);
-		}
-	}
-}
 
-// Try circle line again other side
-function drawAgain() {
-	for (let i = 0; i < 10; i++) {
-		for (let j = 0; i < height; j++) {
-			context.fillStyle = "white";
-			context.lineWidth = 2;
 			Utils.fillCircle(width - (i * 100 + 20), height - (j + i * 100), 20 + i);
 		}
 	}
