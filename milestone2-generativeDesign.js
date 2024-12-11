@@ -44,6 +44,7 @@ function drawHeart(x, y, size, color) {
 	context.fillRect(x - 5, y, size + 5, size + 5);
 }
 
+// Make background follow and change color with mouse movement
 /**
  * @param {MouseEvent} eventData
  */
@@ -57,5 +58,11 @@ function move(eventData) {
 
 	drawHeartMaze();
 	draw();
-	drawHeart(x, y, 5, "purple");
+	drawHeart(x, y, 5, color);
+}
+
+// animate circles
+function animate() {
+	draw();
+	requestAnimationFrame(animate);
 }
