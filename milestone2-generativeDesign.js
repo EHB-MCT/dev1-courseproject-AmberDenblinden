@@ -69,6 +69,7 @@ function animate() {
 	requestAnimationFrame(animate);
 }
 
+// signature
 function name() {
 	context.font = "18px Arial";
 	context.fillStyle = "black";
