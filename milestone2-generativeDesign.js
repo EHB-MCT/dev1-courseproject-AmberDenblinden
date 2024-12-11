@@ -7,6 +7,7 @@ let height = context.canvas.height;
 
 drawMaze();
 draw();
+drawHeart();
 
 // Circle lines
 function draw() {
@@ -25,18 +26,24 @@ function draw() {
 
 // Changing background
 function drawMaze() {
-	context.lineWidth = 5;
-
 	for (let i = 0; i < width; i += 20) {
 		for (let j = 0; j < height; j += 20) {
 			let randomValue = Math.round(Math.random());
-			context.strokeStyle = randomValue === 0 ? "pink" : "lightblue";
+			let color = randomValue === 0 ? "pink" : "lightblue";
 
 			if (randomValue === 0) {
-				Utils.drawLine(i, j, i + Math.random() * 2, j + 15);
+				drawHeart(i, j, 5, color);
 			} else {
-				Utils.drawLine(i, j + Math.random() * 2, i + 15, j);
+				drawHeart(i, j, 5, color);
 			}
 		}
 	}
+}
+
+// drawing heart shape
+function drawHeart(x, y, size, color) {
+	context.fillStyle = color;
+	Utils.fillCircle(x, y, size);
+	Utils.fillCircle(x + 5, y + 5, size);
+	context.fillRect(x - 5, y, size + 5, size + 5);
 }
