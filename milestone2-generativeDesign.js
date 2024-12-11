@@ -5,15 +5,16 @@ import * as Utils from "../../Scripts/utils-1.js";
 let width = context.canvas.width;
 let height = context.canvas.height;
 
-drawMaze();
+window.onmousemove = move;
+
+drawHeartMaze();
 draw();
-drawHeart();
 
 // Circle lines
 function draw() {
 	context.fillStyle = "white";
 
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 11; i++) {
 		for (let j = 0; j < height; j++) {
 			// Circle lines form left to right becoming smaller
 			Utils.fillCircle(i * 100 + 20, j + i * 100, 20 + i);
@@ -25,17 +26,12 @@ function draw() {
 }
 
 // Changing background
-function drawMaze() {
+function drawHeartMaze() {
 	for (let i = 0; i < width; i += 20) {
 		for (let j = 0; j < height; j += 20) {
 			let randomValue = Math.round(Math.random());
 			let color = randomValue === 0 ? "pink" : "lightblue";
-
-			if (randomValue === 0) {
-				drawHeart(i, j, 5, color);
-			} else {
-				drawHeart(i, j, 5, color);
-			}
+			drawHeart(i, j, 5, color);
 		}
 	}
 }
@@ -46,4 +42,20 @@ function drawHeart(x, y, size, color) {
 	Utils.fillCircle(x, y, size);
 	Utils.fillCircle(x + 5, y + 5, size);
 	context.fillRect(x - 5, y, size + 5, size + 5);
+}
+
+/**
+ * @param {MouseEvent} eventData
+ */
+
+function move(eventData) {
+	let x = eventData.pageX;
+	let y = eventData.pageY;
+
+	context.fillStyle = "white";
+	context.fillRect(0, 0, width, height);
+
+	drawHeartMaze();
+	draw();
+	drawHeart(x, y, 5, "purple");
 }
