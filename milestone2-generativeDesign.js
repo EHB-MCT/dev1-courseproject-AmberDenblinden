@@ -9,6 +9,7 @@ window.onmousemove = move;
 
 drawHeartMaze();
 draw();
+name();
 
 // Circle lines
 function draw() {
@@ -58,6 +59,7 @@ function move(eventData) {
 
 	drawHeartMaze();
 	draw();
+	name();
 	drawHeart(x, y, 5, color);
 }
 
@@ -65,4 +67,10 @@ function move(eventData) {
 function animate() {
 	draw();
 	requestAnimationFrame(animate);
+}
+
+function name() {
+	context.font = "18px Arial";
+	context.fillStyle = "black";
+	context.fillText("Amber Denblinden", (width * 3.5) / 4, (height * 3.9) / 4);
 }
