@@ -8,8 +8,7 @@ let height = context.canvas.height;
 window.onmousemove = move;
 
 drawHeartMaze();
-draw();
-name();
+animate();
 
 // Circle lines
 function draw() {
