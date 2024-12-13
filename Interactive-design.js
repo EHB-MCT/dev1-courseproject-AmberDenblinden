@@ -58,19 +58,29 @@ function move(eventData) {
 
 	drawHeartMaze();
 	draw();
-	name();
+	signature();
 	drawHeart(x, y, 5, color);
+}
+
+// signature
+function signature() {
+	//big rectangle
+	context.fillStyle = "lightgray";
+	context.fillRect(50, 700, 175, 175);
+
+	//small rectangles
+	context.fillStyle = "lightgreen";
+	context.fillRect(100, 725, 25, 25);
+	context.fillRect(150, 725, 25, 25);
+	context.fillRect(125, 750, 25, 50);
+	context.fillRect(75, 775, 25, 25);
+	context.fillRect(175, 775, 25, 25);
+	context.fillRect(100, 800, 75, 50);
 }
 
 // animate circles
 function animate() {
 	draw();
 	requestAnimationFrame(animate);
-}
-
-// signature
-function name() {
-	context.font = "18px Arial";
-	context.fillStyle = "black";
-	context.fillText("Amber Denblinden", (width * 3.5) / 4, (height * 3.9) / 4);
+	signature();
 }
