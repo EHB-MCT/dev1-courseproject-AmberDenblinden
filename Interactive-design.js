@@ -7,22 +7,45 @@ let height = context.canvas.height;
 
 window.onmousemove = move;
 
+let circles = [];
+
 drawHeartMaze();
-animate();
+circlesArray();
+draw();
+
+//animating the circles
+function circlesArray() {
+	for (let i = 0; i < 8; i++) {
+		for (let j = 0; j < height; j++) {
+			// pushes an object with data in the circle array
+			circles.push({
+				x: i * 100 + 20,
+				y: j + i * 100,
+				radius: 20 + i,
+			});
+			// pushes an object with data in the circle array - upside down
+			circles.push({
+				x: width - (i * 100 + 20),
+				y: height - (j + i * 100),
+				radius: 20 + i,
+			});
+		}
+	}
+	return circles;
+}
 
 // Circle lines
 function draw() {
 	context.fillStyle = "white";
 
-	for (let i = 0; i < 11; i++) {
-		for (let j = 0; j < height; j++) {
-			// Circle lines form left to right becoming smaller
-			Utils.fillCircle(i * 100 + 20, j + i * 100, 20 + i);
-
-			// Circle lines form right to left becoming smaller
-			Utils.fillCircle(width - (i * 100 + 20), height - (j + i * 100), 20 + i);
-		}
+	let circles = circlesArray();
+	// loop for the circle array
+	for (let circle of circles) {
+		Utils.fillCircle(circle.x, circle.y, circle.radius);
 	}
+
+	signature();
+	requestAnimationFrame(draw);
 }
 
 // Changing background
@@ -59,7 +82,7 @@ function move(eventData) {
 	drawHeartMaze();
 	draw();
 	signature();
-	drawHeart(x, y, 5, color);
+	drawHeart(x, y, 5, "pink");
 }
 
 // signature
@@ -76,11 +99,4 @@ function signature() {
 	context.fillRect(75, 775, 25, 25);
 	context.fillRect(175, 775, 25, 25);
 	context.fillRect(100, 800, 75, 50);
-}
-
-// animate circles
-function animate() {
-	draw();
-	requestAnimationFrame(animate);
-	signature();
 }
