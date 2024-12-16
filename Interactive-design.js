@@ -28,13 +28,15 @@ function circlesArray() {
 				y: j + i * 100,
 				radius: 20 + i,
 				speed: Math.random() * 2 + 1,
+				direction: 1,
 			});
 			// pushes an object with data in the circle array - upside down
 			circles.push({
 				x: width - (i * 100 + 20),
 				y: height - (j + i * 100),
 				radius: 20 + i,
-				speed: 2,
+				speed: Math.random() * 2 + 1,
+				direction: -1,
 			});
 		}
 	}
@@ -45,16 +47,18 @@ function circlesArray() {
 // This code was partially generated with ChatGPT (OpenAI) on 16/12/2024
 function draw() {
 	context.fillStyle = "white";
-	context.fillRect(0, 0, width, height);
+	//context.fillRect(0, 0, width, height);
 
-	drawHeartMaze();
+	//drawHeartMaze();
 
 	// loop for the circle array
 	for (let circle of circles) {
-		circle.y += circle.speed;
+		circle.y += circle.speed * circle.direction;
 
-		if (circle.y + circle.radius < 0) {
+		if (circle.y - circle.radius < 0 && circle.direction === 1) {
 			circle.y = height + circle.radius;
+		} else if (circle.y + circle.radius > height && circle.direction === -1) {
+			circle.y = -circle.radius;
 		}
 		Utils.fillCircle(circle.x, circle.y, circle.radius);
 	}
