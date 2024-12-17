@@ -20,11 +20,11 @@ drawHeartMaze();
 circlesArray();
 draw();
 
-//animating the circles
+// Animating the circles
 function circlesArray() {
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < height; j++) {
-			// pushes an object with data in the circle array
+			// Pushes an object with data in the circle array
 			circles.push({
 				x: i * 100 + 20,
 				y: j + i * 100,
@@ -32,7 +32,7 @@ function circlesArray() {
 				speed: Math.random() * 2 + 1,
 				direction: 1,
 			});
-			// pushes an object with data in the circle array - upside down
+			// Pushes an object with data in the circle array - upside down
 			circles.push({
 				x: width - (i * 100 + 20),
 				y: height - (j + i * 100),
@@ -49,11 +49,11 @@ function circlesArray() {
 // This code was partially generated with ChatGPT (OpenAI) on 16/12/2024
 function draw() {
 	context.fillStyle = "white";
-	// loop for the circle array
+	// Loop for the circle array
 	for (let circle of circles) {
 		circle.y += circle.speed * circle.direction;
 
-		//cicle direction going up and going down
+		// Circle direction going up and going down
 		if (circle.y - circle.radius < 0 && circle.direction === 1) {
 			circle.y = height + circle.radius;
 		} else if (circle.y + circle.radius > height && circle.direction === -1) {
