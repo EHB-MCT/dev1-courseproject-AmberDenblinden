@@ -10,8 +10,10 @@ import * as Utils from "../../Scripts/utils-1.js";
 let width = context.canvas.width;
 let height = context.canvas.height;
 
+// Make background follow and change color with mouse movement
 window.onmousemove = move;
 
+// Circle array
 let circles = [];
 
 drawHeartMaze();
@@ -47,14 +49,11 @@ function circlesArray() {
 // This code was partially generated with ChatGPT (OpenAI) on 16/12/2024
 function draw() {
 	context.fillStyle = "white";
-	//context.fillRect(0, 0, width, height);
-
-	//drawHeartMaze();
-
 	// loop for the circle array
 	for (let circle of circles) {
 		circle.y += circle.speed * circle.direction;
 
+		//cicle direction going up and going down
 		if (circle.y - circle.radius < 0 && circle.direction === 1) {
 			circle.y = height + circle.radius;
 		} else if (circle.y + circle.radius > height && circle.direction === -1) {
@@ -101,7 +100,6 @@ function move(eventData) {
 	drawHeartMaze();
 	draw();
 	signature();
-	animate();
 	drawHeart(x, y, 5, "pink");
 }
 
